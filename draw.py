@@ -127,7 +127,16 @@ M_chi2p = -9999
 ##########################################
 
 # define a function to find the minimum item in a list
-def fmin(list):
+def fmin(list: list[float]) -> float:
+    """
+    Finds the minimum value in a list of floats.
+
+    Args:
+        list: A list of floats.
+
+    Returns:
+        The minimum value in the list.
+    """
     min = 9999
     for item in list:
         if float(item) < min:
@@ -136,7 +145,16 @@ def fmin(list):
 
 
 # define a function to find the maximum item in a list
-def fmax(list):
+def fmax(list: list[float]) -> float:
+    """
+    Finds the maximum value in a list of floats.
+
+    Args:
+        list: A list of floats.
+
+    Returns:
+        The maximum value in the list.
+    """
     max = -0
     for item in list:
         if float(item) > max:
@@ -145,12 +163,19 @@ def fmax(list):
 
 
 # define a function to format the line
-def format_line(line):
+def format_line(line: str) -> str:
+    """
+    This function takes a string and returns a string.
+    Args:
+        line: A string.
+    Returns:
+        A string.
+    """
     line.replace("", "$")
-    xsl = ''
+    xsl = ""
     add = False
     for i in line:
-        if i == '$':
+        if i == "$":
             add = True
             continue
         else:
@@ -309,13 +334,84 @@ if MIN < 0:
     MIN = fmin(mass_list) / 10
 
 # Call Drawing code for read spectrum
-plotting = "\'" + "plot.C(" + str(M_chi10) + "," + str(M_chi20) + "," + str(M_chi30) + "," + str(
-    M_chi40) + "," + str(M_chi1p) + "," + str(M_chi2p) + "," + str(M_uL) + "," + str(M_uR) + "," + str(
-    M_dL) + "," + str(M_dR) + "," + str(M_sL) + "," + str(M_sR) + "," + str(M_cL) + "," + str(M_cR) + "," + str(
-    M_t1) + "," + str(M_t2) + "," + str(M_b1) + "," + str(M_b2) + "," + str(M_eL) + "," + str(M_eR) + "," + str(
-    M_nu_eL) + "," + str(M_muL) + "," + str(M_muR) + "," + str(M_nu_muL) + "," + str(M_tau1) + "," + str(
-    M_tau2) + "," + str(M_nu_tauL) + "," + str(M_h0) + "," + str(M_H) + "," + str(M_Hp) + "," + str(M_A) + "," + str(
-    M_gl) + "," + str(M_G) + "," + str(MIN) + "," + str(MAX) + ",\"" + args.format + "\",\"" + args.outdir + "\")\'"
+
+plotting = (
+    "'"
+    + "plot.C("
+    + str(M_chi10)
+    + ","
+    + str(M_chi20)
+    + ","
+    + str(M_chi30)
+    + ","
+    + str(M_chi40)
+    + ","
+    + str(M_chi1p)
+    + ","
+    + str(M_chi2p)
+    + ","
+    + str(M_uL)
+    + ","
+    + str(M_uR)
+    + ","
+    + str(M_dL)
+    + ","
+    + str(M_dR)
+    + ","
+    + str(M_sL)
+    + ","
+    + str(M_sR)
+    + ","
+    + str(M_cL)
+    + ","
+    + str(M_cR)
+    + ","
+    + str(M_t1)
+    + ","
+    + str(M_t2)
+    + ","
+    + str(M_b1)
+    + ","
+    + str(M_b2)
+    + ","
+    + str(M_eL)
+    + ","
+    + str(M_eR)
+    + ","
+    + str(M_nu_eL)
+    + ","
+    + str(M_muL)
+    + ","
+    + str(M_muR)
+    + ","
+    + str(M_nu_muL)
+    + ","
+    + str(M_tau1)
+    + ","
+    + str(M_tau2)
+    + ","
+    + str(M_nu_tauL)
+    + ","
+    + str(M_h0)
+    + ","
+    + str(M_H)
+    + ","
+    + str(M_Hp)
+    + ","
+    + str(M_A)
+    + ","
+    + str(M_gl)
+    + ","
+    + str(M_G)
+    + ","
+    + str(MIN)
+    + ","
+    + str(MAX)
+    + ',"'
+    + args.format
+    + '","'
+    + args.outdir
+    + "\")'"
+)
 
 output = subprocess.check_output("root -l -b -q " + plotting, shell=True)
-
