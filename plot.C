@@ -204,9 +204,10 @@ void plot(float M_chi10=-9999,
     cmass->cd()->SetLeftMargin(0.15);
     cmass->SetTicks();
 
-    TH2F* frame = new TH2F("frame","",1,-1,Nparticles+6,100,MIN,MAX);
+    TH2F* frame = new TH2F("frame","",2,-2,Nparticles+6,1000,MIN,MAX);
     frame->GetXaxis()->SetLabelSize(0);
     frame->GetXaxis()->SetTickLength(0);
+    frame->GetXaxis()->SetRange( 1.0, 10.0 );
     frame->GetXaxis()->SetTitle("SUSY Model Particles");
     frame->GetXaxis()->CenterTitle();
     frame->GetYaxis()->SetTitle("Mass [GeV]");
@@ -285,6 +286,6 @@ void plot(float M_chi10=-9999,
     if( M_G       > 0 )     	T_G       ->Draw();
 
 
-    cmass->SaveAs(outdir+"/M_Spectrum."+format);
+    cmass->SaveAs(outdir+"/Mass_Spectrum."+format);
   }
 

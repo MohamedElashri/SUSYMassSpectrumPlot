@@ -127,7 +127,8 @@ M_chi2p = -9999
 ##########################################
 
 # define a function to find the minimum item in a list
-def fmin(list: list[float]) -> float:
+#def fmin(list: list[float]) -> float:
+def fmin(list):
     """
     Finds the minimum value in a list of floats.
 
@@ -145,7 +146,7 @@ def fmin(list: list[float]) -> float:
 
 
 # define a function to find the maximum item in a list
-def fmax(list: list[float]) -> float:
+def fmax(list):
     """
     Finds the maximum value in a list of floats.
 
